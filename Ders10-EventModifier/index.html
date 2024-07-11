@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header><h1>Frontendde Öğrenmemiz Gerekenler</h1></header>
+    <section id="frontend">
+      <input type="text" v-on:input="setName($event , 'Yerli')" />
+      <p>Adınız: {{name}}</p>
+      <form v-on:submit.prevent="login">
+        <input type="text" />
+        <button>Giriş Yap</button>
+      </form>
+    </section>
+    <script src="script.js" defer></script>
+  </body>
+</html>
