@@ -15,28 +15,30 @@
       <div id="computer" class="container">
         <h2>Bilgisayar</h2>
         <div class="hpBar">
-          <div class="hpBarValue"></div>
-          <p class="hpPerValue">%100</p>
+          <div class="hpBarValue" :style="[compBarStyle,compBarColor]"></div>
+          <p class="hpPerValue">%{{compHp > 0 ? compHp : 0}}</p>
         </div>
       </div>
       <div id="user" class="container">
         <h2>Kullanıcı</h2>
         <div class="hpBar">
-          <div class="hpBarValue"></div>
-          <p class="hpPerValue">%100</p>
+          <div class="hpBarValue" :style="[userBarStyle,userBarColor]"></div>
+          <p class="hpPerValue">%{{userHp > 0 ? userHp : 0}}</p>
         </div>
       </div>
       <div class="container" v-if="winner">
         <h2>Oyun Bitti</h2>
-        <h3>Bilgisayar Kazandı!</h3>
-        <h3>Kullanıcı Kazandı!</h3>
-        <h3>Beraberlik!</h3>
-        <button>Yeni Oyun</button>
+        <h3 v-if="winner === 'computer'">Bilgisayar Kazandı!</h3>
+        <h3 v-else-if="winner === 'user'">Kullanıcı Kazandı!</h3>
+        <h3 v-else="winner === 'draw'">Beraberlik!</h3>
+        <button @click="newGame()">Yeni Oyun</button>
       </div>
       <div id="attacks" v-else>
-        <button>Saldırı</button>
-        <button :disabled="true">Süper Saldırı</button>
-        <button>İyileştir</button>
+        <button @click="attackToComp()">Saldırı</button>
+        <button @click="superAttack()" :disabled="specialAttack">
+          Süper Saldırı
+        </button>
+        <button @click="healUser()">İyileştir</button>
       </div>
     </section>
     <script src="script.js"></script>
