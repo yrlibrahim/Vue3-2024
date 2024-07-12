@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saldırı Oyunu</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Saldırı Oyunu</h1>
+    </header>
+    <section id="app">
+      <div id="computer" class="container">
+        <h2>Bilgisayar</h2>
+        <div class="hpBar">
+          <div class="hpBarValue"></div>
+          <p class="hpPerValue">%100</p>
+        </div>
+      </div>
+      <div id="user" class="container">
+        <h2>Kullanıcı</h2>
+        <div class="hpBar">
+          <div class="hpBarValue"></div>
+          <p class="hpPerValue">%100</p>
+        </div>
+      </div>
+      <div class="container" v-if="winner">
+        <h2>Oyun Bitti</h2>
+        <h3>Bilgisayar Kazandı!</h3>
+        <h3>Kullanıcı Kazandı!</h3>
+        <h3>Beraberlik!</h3>
+        <button>Yeni Oyun</button>
+      </div>
+      <div id="attacks" v-else>
+        <button>Saldırı</button>
+        <button :disabled="true">Süper Saldırı</button>
+        <button>İyileştir</button>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
