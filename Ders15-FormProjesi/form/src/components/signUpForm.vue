@@ -11,6 +11,19 @@
         <option value="male">Erkek</option>
         <option value="female">Kadın</option>
       </select>
+      <label>Bildiğiniz Diller: </label>
+      <input
+        type="text"
+        placeholder="Beceri eklemek için Enter'a basın."
+        v-model="skill"
+        @keyup.enter="addSkill"
+      />
+      <div class="skillList" v-for="skillItem in skills" :key="skillItem">
+        <span
+          >{{ skillItem }}
+          <i @click="deleteSkill(skillItem)" class="fa-solid fa-xmark"></i>
+        </span>
+      </div>
       <div id="terms">
         <input class="checkbox" type="checkbox" v-model="term" />
         <label @click="termAccept" class="termAccept">
@@ -25,7 +38,7 @@
           placeat veniam harum.
         </p>
       </div>
-      <button>Kayıt Ol</button>
+      <button type="button">Kayıt Ol</button>
     </form>
     <p>{{ email }}</p>
     <p>{{ password }}</p>
@@ -43,11 +56,26 @@ export default {
       password: "",
       gender: "",
       term: false,
+      skill: "",
+      skills: [],
     };
   },
   methods: {
     termAccept() {
       this.showterms = !this.showterms;
+    },
+    addSkill() {
+      if (this.skill) {
+        if (!this.skills.includes(this.skill)) {
+          this.skills.push(this.skill);
+        }
+        this.skill = "";
+      }
+    },
+    deleteSkill(skill) {
+      this.skills = this.skills.filter((item) => {
+        return skill != item;
+      });
     },
   },
 };
@@ -74,7 +102,7 @@ input {
 select {
   display: block;
   width: 100%;
-  margin-top: 10px;
+  margin: 10px 0;
   padding: 5px;
   border-radius: 10px;
 }
@@ -94,7 +122,7 @@ button {
   font-weight: 700;
 }
 button:hover {
-  background-color: greenyellow;
+  background-color: #05ce26;
 }
 #terms {
   margin-top: 15px;
@@ -102,5 +130,29 @@ button:hover {
 .termAccept {
   cursor: pointer;
   color: blue;
+}
+.skillList {
+  display: inline-block;
+  width: auto;
+  height: 20px;
+  border: 1px solid;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 20px;
+  background-color: white;
+}
+.skillList span {
+  text-align: center;
+  cursor: pointer;
+}
+.skillList span i {
+  color: red;
+}
+.skillList span i:hover {
+  padding: 2px 4px;
+  border: none;
+  border-radius: 50px;
+  background-color: red;
+  color: white;
 }
 </style>
