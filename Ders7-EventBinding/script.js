@@ -4,7 +4,11 @@ const app = Vue.createApp({
       counter: 0,
     };
   },
-  methods: {},
+  methods: {
+    reset() {
+      this.counter = 0;
+    },
+  },
 });
 
 app.mount("#frontend");
