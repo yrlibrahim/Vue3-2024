@@ -149,7 +149,7 @@ button:hover {
   color: red;
 }
 .skillList span i:hover {
-  padding: 2px 4px;
+  padding: 3px 4px;
   border: none;
   border-radius: 50px;
   background-color: red;
