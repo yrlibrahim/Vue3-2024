@@ -1,3 +1,10 @@
 <template>
-  <div>başlık</div>
+  <header>Header</header>
 </template>
+<style scoped>
+header {
+  background-color: lightgreen;
+  padding: 10px;
+  text-align: center;
+}
+</style>
