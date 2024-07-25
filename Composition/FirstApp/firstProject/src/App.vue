@@ -3,39 +3,42 @@
   <div class="container">
     <!-- <appPerson :name="data.name" :age="data.age" @re-age="reAge" />
     <button @click="rename">Güncelle</button> -->
-    <appStudent :students="students" />
+    <appStudent />
   </div>
   <appFooter />
 </template>
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, provide } from "vue";
 import appFooter from "@/components/Fixed/Footer.vue";
 // import appPerson from "@/components/PersonInfo/Person.vue";
 import appStudent from "@/components/Students/Students.vue";
 
 const students = reactive([
   {
-    id: 0,
+    id: 1,
     name: "Ibrahim",
     score: 80,
   },
   {
-    id: 1,
+    id: 2,
     name: "Ahmet",
     score: 70,
   },
   {
-    id: 2,
+    id: 3,
     name: "Mehmet",
     score: 75,
   },
 ]);
-const rename = () => {
-  data.name = "Mehmet";
+const updateStudent = () => {
+  students[0].score = 70;
 };
-const reAge = (reAge) => {
-  data.age = 25;
-};
+
+provide("students", { students, updateStudent });
+
+/*  const reAge = (reAge) => {
+   data.age = 25;
+ }; */
 </script>
 
 <style>
