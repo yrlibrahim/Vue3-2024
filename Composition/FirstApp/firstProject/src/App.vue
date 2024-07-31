@@ -3,38 +3,52 @@
   <div class="container">
     <!-- <appPerson :name="data.name" :age="data.age" @re-age="reAge" />
     <button @click="rename">Güncelle</button> -->
-    <appStudent />
+    <!-- <appStudent /> -->
+
+    <!--Active Component Yapısı-->
+    <!-- <button @click="activeComp = studentOne">Öğrenci Bir</button>
+    <button @click="activeComp = studentTwo">Öğrenci İki</button>
+    <studentOne v-if="activeComp === studentOne" />
+    <studentTwo v-if="activeComp === studentTwo" /> -->
+
+    <contactForm />
   </div>
+
   <appFooter />
 </template>
 <script setup>
-import { ref, reactive, provide } from "vue";
+import { ref, reactive, provide, shallowRef } from "vue";
 import appFooter from "@/components/Fixed/Footer.vue";
+import contactForm from "@/components/Contanct/contactForm.vue";
+// import studentOne from "@/components/StudentsMath/StudentOne.vue";
+// import studentTwo from "@/components/StudentsMath/StudentTwo.vue";
+
+// const activeComp = shallowRef(studentOne);
 // import appPerson from "@/components/PersonInfo/Person.vue";
-import appStudent from "@/components/Students/Students.vue";
+// import appStudent from "@/components/Students/Students.vue";
 
-const students = reactive([
-  {
-    id: 1,
-    name: "Ibrahim",
-    score: 80,
-  },
-  {
-    id: 2,
-    name: "Ahmet",
-    score: 70,
-  },
-  {
-    id: 3,
-    name: "Mehmet",
-    score: 75,
-  },
-]);
-const updateStudent = () => {
-  students[0].score = 70;
-};
+// const students = reactive([
+//   {
+//     id: 1,
+//     name: "Ibrahim",
+//     score: 80,
+//   },
+//   {
+//     id: 2,
+//     name: "Ahmet",
+//     score: 70,
+//   },
+//   {
+//     id: 3,
+//     name: "Mehmet",
+//     score: 75,
+//   },
+// ]);
+// const updateStudent = () => {
+//   students[0].score = 70;
+// };
 
-provide("students", { students, updateStudent });
+// provide("students", { students, updateStudent });
 
 /*  const reAge = (reAge) => {
    data.age = 25;
@@ -42,7 +56,7 @@ provide("students", { students, updateStudent });
 </script>
 
 <style>
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -60,9 +74,9 @@ button {
   margin-top: 10px;
   background-color: lightgreen;
 }
-button:hover {
+ button:hover {
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: all 0.4s ease;
-}
+} */
 </style>
