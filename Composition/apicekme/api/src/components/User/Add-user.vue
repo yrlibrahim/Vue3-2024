@@ -13,24 +13,9 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import axios from "axios";
+import postUsers from "@/composables/postUsers";
 
-const user = reactive({
-  name: "",
-  lastname: "",
-});
-
-const submitForm = () => {
-  axios({
-    method: "POST",
-    url: "http://localhost:3000/users",
-    data: user,
-  })
-    .then(() => {})
-    .catch(() => {})
-    .finally(() => {});
-};
+const { user, submitForm } = postUsers();
 </script>
 
 <style></style>

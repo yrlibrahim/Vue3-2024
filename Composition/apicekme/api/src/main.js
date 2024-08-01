@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import Loading from "@/components/Utility/Loading.vue";
-
-App.component("app-loading", Loading);
+import ToastPlugin from "vue-toast-notification";
+import "vue-toast-notification/dist/theme-bootstrap.css";
 
 createApp(App).mount("#app");
+app.use(ToastPlugin);
