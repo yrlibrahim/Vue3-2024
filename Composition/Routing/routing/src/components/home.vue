@@ -6,7 +6,9 @@
       iste, recusandae unde hic laudantium eaque harum id in ipsum neque, illo
       vel eius tempora dolores corrupti maxime provident repellat.
     </p>
-    <button class="btn btn-primary btn-lg">Devamını Oku</button>
+    <button @click="router.push('/articles')" class="btn btn-primary btn-lg">
+      Devamını Oku
+    </button>
   </div>
   <div class="container">
     <div class="row">
@@ -33,4 +35,12 @@
     </div>
   </div>
 </template>
-<script setup></script>
+<script setup>
+import { useRouter, useRoute } from "vue-router";
+
+const router = useRouter();
+const route = useRoute();
+
+console.log(router);
+console.log(route);
+</script>
