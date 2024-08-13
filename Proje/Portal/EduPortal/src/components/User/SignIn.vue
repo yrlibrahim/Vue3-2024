@@ -1,6 +1,18 @@
 <template>
   <div class="sign-in-container">
-    <Form class="sign-in-form row gy-4" :validation-schema="formSchema">
+    <div v-if="userStore.loading">
+      <v-progress-circular
+        color="primary"
+        indeterminate
+        :size="62"
+      ></v-progress-circular>
+    </div>
+    <Form
+      v-if="!userStore.loading"
+      class="sign-in-form row gy-4"
+      :validation-schema="formSchema"
+      @submit="onSubmit"
+    >
       <h2>{{ isLoggedActive ? "Giriş Yap" : "Kaydol" }}</h2>
 
       <div class="form-group">
@@ -49,6 +61,9 @@
 import { Field, Form } from "vee-validate";
 import * as yup from "yup";
 import { ref } from "vue";
+import { useUserStore } from "@/stores/user";
+
+const userStore = useUserStore();
 
 const formSchema = yup.object({
   email: yup
@@ -59,4 +74,12 @@ const formSchema = yup.object({
 });
 
 const isLoggedActive = ref(true);
+
+function onSubmit(values, { resetForm }) {
+  if (isLoggedActive.value) {
+    userStore.signIn(values);
+  } else {
+    userStore.register(values);
+  }
+}
 </script>
