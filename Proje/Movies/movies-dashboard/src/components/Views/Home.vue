@@ -1,31 +1,39 @@
 <template>
   <app-header @search="handleSearch"></app-header>
-  <div class="row">
-    <div class="col-md-3 mb-4" v-for="movie in filteredMovies" :key="movie.id">
-      <div class="movie-card">
-        <h1 class="movie-name">{{ movie.title }}</h1>
-        <img :src="getPosterUrl(movie.poster_path)" />
-        <div class="movie-card-info justify-content-between">
-          <span>Rate: {{ movie.vote_average }}</span>
-          <span>Date: {{ movie.release_date }}</span>
-        </div>
-        <div class="movie-card-bottom justify-content-around">
-          <button
-            type="button"
-            :class="isFavorite(movie.id) ? 'button-remove' : 'button-add'"
-            @click="toggleFavorite(movie)"
-          >
-            <font-awesome-icon
-              style="background-color: rgba(0, 0, 0, 0)"
-              :icon="isFavorite(movie.id) ? ['fas', 'heart'] : ['far', 'heart']"
-              :style="{ color: isFavorite(movie.id) ? '#ff0000' : '' }"
-            />
-          </button>
-          <router-link
-            :to="{ name: 'Info', params: { id: movie.id } }"
-            class="button-info"
-            ><button type="button">Detaylar</button></router-link
-          >
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-md-3 mb-4"
+        v-for="movie in filteredMovies"
+        :key="movie.id"
+      >
+        <div class="movie-card">
+          <h1 class="movie-name">{{ movie.title }}</h1>
+          <img :src="getPosterUrl(movie.poster_path)" />
+          <div class="movie-card-info justify-content-between">
+            <span>Rate: {{ movie.vote_average }}</span>
+            <span>Date: {{ movie.release_date }}</span>
+          </div>
+          <div class="movie-card-bottom justify-content-around">
+            <button
+              type="button"
+              :class="isFavorite(movie.id) ? 'button-remove' : 'button-add'"
+              @click="toggleFavorite(movie)"
+            >
+              <font-awesome-icon
+                style="background-color: rgba(0, 0, 0, 0)"
+                :icon="
+                  isFavorite(movie.id) ? ['fas', 'heart'] : ['far', 'heart']
+                "
+                :style="{ color: isFavorite(movie.id) ? '#ff0000' : '' }"
+              />
+            </button>
+            <router-link
+              :to="{ name: 'Info', params: { id: movie.id } }"
+              class="button-info"
+              ><button type="button">Detaylar</button></router-link
+            >
+          </div>
         </div>
       </div>
     </div>

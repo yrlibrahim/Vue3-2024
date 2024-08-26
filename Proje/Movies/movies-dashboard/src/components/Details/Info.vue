@@ -11,7 +11,7 @@
     <div class="info-box-img">
       <img :src="getBackdropUrl(movie.backdrop_path)" />
     </div>
-    <div class="info-box-text">
+    <div class="info-box-text container">
       <h1>{{ movie.title }}</h1>
       <div class="details-rate-date">
         <p>Rate: {{ movie.vote_average }}</p>
@@ -65,7 +65,7 @@ onMounted(fetchMovieDetails);
 }
 .info-box-img img {
   width: 100%;
-  height: 100vh;
+  height: auto;
   opacity: 0.4;
 }
 .info-box-text {
@@ -98,9 +98,14 @@ h2 {
 }
 .back-button {
   position: absolute;
-  top: 0;
-  left: 0;
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0);
+  z-index: 1;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.back-button:hover {
+  transform: scale(1.1);
+  transition: all ease 0.4s;
 }
 </style>
